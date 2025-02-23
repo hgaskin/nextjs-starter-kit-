@@ -1,0 +1,95 @@
+---
+description: Guidelines and best practices for using shadcn/ui components, including component selection workflow, installation patterns, and customization standards. Ensures consistent usage of pre-built components before creating custom ones.
+globs: "**/*.{ts,tsx,js,jsx}", "components/ui/**/*.tsx", "**/components.json", "app/**/page.tsx", "components/**/*.tsx"
+alwaysApply: false
+---
+
+# Your rule content
+
+# Shadcn/ui Component Usage and Installation Guidelines
+
+## Component Selection Process
+
+1. Before creating any new UI component, follow this checklist:
+   - First, check if the component already exists in your local `@/components/ui` directory
+   - Second, check the /components/ui components library for available components
+   - Only create a custom component if neither option above satisfies your needs
+
+## Installation Commands
+
+Always use the latest installation syntax:
+
+```bash
+# Initialize shadcn/ui in a new or existing project
+npx shadcn@latest init
+
+# Add a specific component
+npx shadcn@latest add [component-name]
+```
+
+## Component Installation Best Practices
+
+1. Use the `@latest` tag instead of version numbers
+2. Always run installation commands from your project root
+3. After installation, components will be available in `@/components/ui/`
+4. Import components using the following pattern:
+   ```typescript
+   import { ComponentName } from "@/components/ui/component-name"
+   ```
+
+## Configuration Standards
+
+Maintain these settings in your `components.json`:
+```json
+{
+  "style": "new-york",
+  "tailwind": {
+    "config": "tailwind.config.ts",
+    "css": "app/globals.css",
+    "baseColor": "zinc",
+    "cssVariables": true
+  },
+  "aliases": {
+    "components": "@/components",
+    "utils": "@/lib/utils"
+  }
+}
+```
+
+## Component Customization
+
+1. Always customize components through Tailwind classes first
+2. Modify the component source in `@/components/ui` only when necessary
+3. Document any modifications to base components
+
+## Available Components Reference
+
+Before creating custom components, check if these common shadcn/ui components meet your needs:
+
+- Layout: Card, Sheet, Hover Card
+- Navigation: Navigation Menu, Tabs, Breadcrumb
+- Inputs: Button, Input, Textarea, Select, Combobox
+- Display: Avatar, Badge, Table
+- Feedback: Alert, Toast, Progress
+- Overlay: Dialog, Drawer, Popover
+- Media: Carousel, Aspect Ratio
+- Layout: Accordion, Collapsible, Separator
+- Forms: Checkbox, Radio Group, Switch, Slider
+- Date/Time: Calendar, Date Picker
+- Typography: Typography, Large Text
+
+## Installation Troubleshooting
+
+If you encounter issues:
+1. Ensure you're using Node.js 18.17 or later
+2. Verify your package manager is up to date
+3. Check that all peer dependencies are installed
+4. Confirm your `tailwind.config.ts` and `globals.css` are properly configured
+
+## Best Practices
+
+1. Use Server Components by default
+2. Add `"use client"` only when necessary
+3. Utilize TypeScript for all components
+4. Follow the shadcn/ui naming conventions
+5. Keep component customizations maintainable
